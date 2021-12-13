@@ -6,13 +6,14 @@ body {
   max-width: 600px;
   margin: 0 auto;
   padding: 30px;
-  border: 1px solid;
+  border: 1px solid rgb(197, 193, 193);
+
   border-radius: 20px;
 }
 
 h1 {
   font-weight: 400;
-  color: rgb(53, 52, 52);
+  color: rgb(70, 66, 66);
   font-size: 27px;
   margin-top: 20px;
   margin-bottom: 0px;
@@ -25,17 +26,33 @@ h1 {
 .detailsMore {
   list-style-type: none;
   font-size: smaller;
+  font-weight: 50;
   margin-top: 10px;
 }
 small {
   font-size: xx-small;
   position: fixed;
 }
-#tempValue {
+#temp {
   font-size: 50px;
 }
 .week {
   font-size: 12px;
+  font-weight: bold;
   text-align: center;
   padding-top: 20px;
+}
+#icon {
+  margin-top: 8px;
+  margin-right: 0px;
+  height: 64px;
+  width: 64px;
+}
+#celsius,
+#farh {
+  position: relative;
+  top: -25px;
+}
+#info {
+  text-transform: capitalize;
 }
