@@ -46,8 +46,14 @@ function showDetails(response) {
   );
 }
 
-apiKey = "17e7458113b38b3d9ab8a6cbf84a6119";
-let cityName = "Porto";
-apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
+function searchCity(event) {
+  event.preventDefault();
+  let citySearch = document.querySelector("#textInput");
+  let cityName = citySearch.value;
+  apiKey = "17e7458113b38b3d9ab8a6cbf84a6119";
+  apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
 
-axios.get(apiUrl).then(showDetails);
+  axios.get(apiUrl).then(showDetails);
+}
+let form = document.querySelector("#form");
+form.addEventListener("submit", searchCity);
