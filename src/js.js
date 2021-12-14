@@ -57,3 +57,13 @@ function searchCity(event) {
 }
 let form = document.querySelector("#form");
 form.addEventListener("submit", searchCity);
+
+function tempFarh(event) {
+  event.preventDefault();
+  let temperature = document.querySelector("#temp");
+  let farhValue = (temperature.value * 9) / 5 + 32;
+  temperature.innerHTML = Math.round(farhValue);
+}
+
+let farh = document.querySelector("#farhValue");
+farh.addEventListener("click", tempFarh);

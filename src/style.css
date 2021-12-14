@@ -52,6 +52,7 @@ small {
 #farh {
   position: relative;
   top: -25px;
+  text-decoration-line: underline;
 }
 #info {
   text-transform: capitalize;
