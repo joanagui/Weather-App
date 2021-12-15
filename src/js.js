@@ -61,7 +61,7 @@ form.addEventListener("submit", searchCity);
 function tempFarh(event) {
   event.preventDefault();
   let temperature = document.querySelector("#temp");
-  let farhValue = (temperature.value * 9) / 5 + 32;
+  let farhValue = (temperature.innerHTML * 9) / 5 + 32;
   temperature.innerHTML = Math.round(farhValue);
 }
 
