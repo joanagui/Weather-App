@@ -21,6 +21,14 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function showIcons(response) {
+  let icon2 = document.querySelector("#icon2");
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[1].icon}@2x.png`
+  );
+}
+
 function showDetails(response) {
   console.log(response);
   let city = document.querySelector("h1");
@@ -44,6 +52,11 @@ function showDetails(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  let lat = response.coords.latitude;
+  let lon = response.coords.longitude;
+  apiKey = "17e7458113b38b3d9ab8a6cbf84a6119";
+  let apiIcons = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${apiKey}`;
+  axios.get(apiIcons).then(showIcons);
 }
 
 function searchCity(event) {
