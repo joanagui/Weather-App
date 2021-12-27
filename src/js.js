@@ -21,16 +21,7 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function showIcons(response) {
-  let icon2 = document.querySelector("#icon2");
-  icon.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[1].icon}@2x.png`
-  );
-}
-
 function showDetails(response) {
-  console.log(response);
   let city = document.querySelector("h1");
   city.innerHTML = response.data.name;
   let description = response.data.weather[0].description;
@@ -52,11 +43,6 @@ function showDetails(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-  let lat = response.coords.latitude;
-  let lon = response.coords.longitude;
-  apiKey = "17e7458113b38b3d9ab8a6cbf84a6119";
-  let apiIcons = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${apiKey}`;
-  axios.get(apiIcons).then(showIcons);
 }
 
 function searchCity(event) {
@@ -65,7 +51,6 @@ function searchCity(event) {
   let cityName = citySearch.value;
   apiKey = "17e7458113b38b3d9ab8a6cbf84a6119";
   apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
-
   axios.get(apiUrl).then(showDetails);
 }
 let form = document.querySelector("#form");
@@ -80,3 +65,22 @@ function tempFarh(event) {
 
 let farh = document.querySelector("#farhValue");
 farh.addEventListener("click", tempFarh);
+
+function showIcons(response) {
+  let icon2 = document.querySelector("#icon2");
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[1].icon}@2x.png`
+  );
+}
+
+function getCurrentWeather(position) {
+  console.log(position);
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiKey = "17e7458113b38b3d9ab8a6cbf84a6119";
+  let apiIcons = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${apiKey}`;
+  axios.get(apiIcons).then(showIcons);
+}
+
+form.addEventListener("submit", getCurrentWeather);
