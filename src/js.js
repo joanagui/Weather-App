@@ -21,27 +21,39 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function formatDays(timestamp) {
+  let date = new Date(timestamp * 1000);
+
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
+  let day = days[date.getDay()];
+  return day;
+}
 function displayForecast(response) {
-  console.log(response.data);
+  console.log(response);
+  let forecastInfo = response.data.daily;
   let forecast = document.querySelector("#forecast");
 
   let forecastHMTL = `<div class="row week">`;
-  let days = ["Tues", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  days.forEach(function (day) {
-    forecastHMTL =
-      forecastHMTL +
-      `
-          <div class="col">
-            <div>${day}</div>
+
+  forecastInfo.forEach(function (forecastInfoDay, index) {
+    if (index < 6) {
+      forecastHMTL =
+        forecastHMTL +
+        `
+          <div class="col-2">
+            <div>${formatDays(forecastInfoDay.dt)}</div>
             <img
-              src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
+              src="http://openweathermap.org/img/wn/${
+                forecastInfoDay.weather[0].icon
+              }@2x.png"
               alt="cloudy"
               id="icon2"
             />
           </div>`;
 
-    forecastHTML = forecastHMTL + `</div>`;
-    forecast.innerHTML = forecastHMTL;
+      forecastHTML = forecastHMTL + `</div>`;
+      forecast.innerHTML = forecastHMTL;
+    }
   });
 }
 function getForecast(coordinates) {
