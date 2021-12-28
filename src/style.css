@@ -48,11 +48,10 @@ small {
   height: 64px;
   width: 64px;
 }
-#celsius,
-#farh {
+#celsius {
   position: relative;
   top: -25px;
-  text-decoration-line: underline;
+  text-decoration-line: none;
 }
 #info {
   text-transform: capitalize;

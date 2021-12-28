@@ -91,6 +91,8 @@ function showDetails(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 
+  let cityMainDiv = document.querySelector("#citymain");
+  cityMainDiv.style.display = "block";
   getForecast(response.data.coord);
 }
 
@@ -104,13 +106,3 @@ function searchCity(event) {
 }
 let form = document.querySelector("#form");
 form.addEventListener("submit", searchCity);
-
-function tempFarh(event) {
-  event.preventDefault();
-  let temperature = document.querySelector("#temp");
-  let farhValue = (temperature.innerHTML * 9) / 5 + 32;
-  temperature.innerHTML = Math.round(farhValue);
-}
-
-let farh = document.querySelector("#farhValue");
-farh.addEventListener("click", tempFarh);
