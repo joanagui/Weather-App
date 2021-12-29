@@ -48,7 +48,8 @@ small {
   height: 64px;
   width: 64px;
 }
-#celsius {
+#celsius,
+#farh {
   position: relative;
   top: -25px;
   text-decoration-line: none;
