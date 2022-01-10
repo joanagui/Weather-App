@@ -111,7 +111,7 @@ function farhEvent(event) {
   event.preventDefault();
   let value = document.querySelector("#temp");
   let tempeValue = value.innerHTML;
-  value.innerHTML = Math.round(tempeValue * 1.8 + 32);
+  value.innerHTML = `Math.round(${tempeValue} * 1.8 + 32)`;
 }
 let farh = document.querySelector("#farh");
 farh.addEventListener("click", farhEvent);
